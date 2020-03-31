@@ -3,48 +3,50 @@
     <ion-button (click)="go(0)" color="primary" class="backButton">
       <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-button>
-    <ion-title class="titleToolbar">Igreja</ion-title>
+    <ion-title class="titleToolbar">IGREJA</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
 
-  <div class="titleSections">INFORMAÇÕES DE CONTATO</div>
+  <div class="titleSections">Informações de contato</div>
 
-  <ion-card>
-    <div>
-      <ion-icon name="call"></ion-icon>
-      <ion-label>(81) 99652-6767</ion-label>
+  <ion-card class="contactSection">
+
+    <div class="contactSections">
+      <ion-icon class="contactSectionsIcon" name="call"></ion-icon>
+      <ion-label class="contactSectionsText">(81) 98358-3276</ion-label>
     </div>
-    <div>
-      <ion-icon name="globe"></ion-icon>
-      SITE
-    </div>
-    <div>
-      <ion-icon name="navigate-circle"></ion-icon>
-      Rua Floriano Peixoto
+    <!-- <div class="contactSections">
+      <ion-icon class="contactSectionsIcon" name="globe"></ion-icon>
+      <ion-label class="contactSectionsText">(81) 99652-6767</ion-label>
+    </div> -->
+    <div class="contactSections">
+      <ion-icon class="contactSectionsIcon" name="navigate-circle"></ion-icon>
+      <ion-label class="contactSectionsText">Rua Floriano Peixoto, Nº354 - Centro - Jaboatão dos Guararapes - (PE)
+      </ion-label>
     </div>
     <a class="btnSections" href="https://maps.app.goo.gl/iSo6fsTQ1KfMAZwq7">
       COMO CHEGAR?</a>
   </ion-card>
 
-  <div class="titleSections">PROGRAMAÇÃO DA SEMANA</div>
+  <div class="titleSections">Programação da Semana</div>
 
   <ion-grid>
 
     <ion-row>
       <ion-col>
         <ion-card class="programCard">
-          <ion-label>TER</ion-label><br>
-          <ion-label>CULTO DE INSTRUÇÃO</ion-label><br>
-          <ion-label>19:00H</ion-label>
+          <ion-label class="programCardTitle">DOM</ion-label><br>
+          <ion-label class="programCardName">EBD</ion-label><br>
+          <ion-label class="programCardDate">09:00H</ion-label>
         </ion-card>
       </ion-col>
       <ion-col>
         <ion-card class="programCard">
-          <ion-label>QUI</ion-label><br>
-          <ion-label>CÍRCULO DE ORAÇÃO</ion-label><br>
-          <ion-label>19:00H</ion-label>
+          <ion-label class="programCardTitle">DOM</ion-label><br>
+          <ion-label class="programCardName">EBD</ion-label><br>
+          <ion-label class="programCardDate">09:00H</ion-label>
         </ion-card>
       </ion-col>
     </ion-row>
@@ -53,36 +55,146 @@
       <ion-col>
         <ion-card class="programCard">
           <ion-label class="programCardTitle">DOM</ion-label><br>
-          <ion-label class="programCardTitle">EBD</ion-label><br>
-          <ion-label class="programCardTitle">09:00H</ion-label>
+          <ion-label class="programCardName">EBD</ion-label><br>
+          <ion-label class="programCardDate">09:00H</ion-label>
         </ion-card>
       </ion-col>
       <ion-col>
         <ion-card class="programCard">
-          <ion-label>DOM</ion-label><br>
-          <ion-label>CULTO DE LOUVOR</ion-label><br>
-          <ion-label>19:00H</ion-label>
+          <ion-label class="programCardTitle">DOM</ion-label><br>
+          <ion-label class="programCardName">EBD</ion-label><br>
+          <ion-label class="programCardDate">09:00H</ion-label>
         </ion-card>
       </ion-col>
     </ion-row>
 
   </ion-grid>
 
-  <div class="titleSections">PROGRAMAÇÃO DA SEMANA</div>
+  <div class="titleSections">HISTÓRIA</div>
 
-  <div class="timeline">
-    <div class="container left">
-      <div class="content">
-        <h2>2017</h2>
-        <p>Lorem ipsum..</p>
-      </div>
-    </div>
-    <div class="container right">
-      <div class="content">
-        <h2>2016</h2>
-        <p>Lorem ipsum..</p>
-      </div>
-    </div>
+  <div class="container">
+
+    <ul class="timeline">
+      <li>
+        <div class="tldate">Apr 2014</div>
+      </li>
+
+      <li>
+        <div class="tl-circ"></div>
+        <div class="timeline-panel">
+          <p><img src="http://lorempixel.com/600/300/nightlife/" alt="lorem pixel"></p>
+          <div class="tl-heading">
+            <h4>Surprising Headline Right Here</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 3 hours ago</small></p>
+          </div>
+          <div class="tl-body">
+            <p>Lorem Ipsum and such.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="timeline-inverted">
+        <div class="tl-circ"></div>
+        <div class="timeline-panel">
+          <p><img src="http://lorempixel.com/600/300/nightlife/" alt="lorem pixel"></p>
+          <div class="tl-heading">
+            <h4>Breaking into Spring!</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 4/07/2014</small></p>
+          </div>
+          <div class="tl-body">
+            <p>Hope the weather gets a bit nicer...</p>
+
+            <p>Y'know, with more sunlight.</p>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <div class="tldate">Mar 2014</div>
+      </li>
+
+      <li>
+        <div class="tl-circ"></div>
+        <div class="timeline-panel">
+          <p><img src="http://lorempixel.com/600/300/nightlife/" alt="lorem pixel"></p>
+          <div class="tl-heading">
+            <h4>New Apple Device Release Date</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 3/22/2014</small></p>
+          </div>
+          <div class="tl-body">
+            <p>In memory of Steve Jobs.</p>
+          </div>
+        </div>
+      </li>
+      <li class="timeline-inverted">
+        <div class="timeline-panel">
+          <p><img src="http://lorempixel.com/600/300/nightlife/" alt="lorem pixel"></p>
+          <div class="tl-heading">
+            <h4>No icon here</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 3/16/2014</small></p>
+          </div>
+          <div class="tl-body">
+            <p>Here you'll find some beautiful photography for your viewing pleasure, courtesy of <a
+                href="http://lorempixel.com/">lorempixel</a>.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="tl-circ"></div>
+        <div class="timeline-panel">
+          <p><img src="http://lorempixel.com/600/300/nightlife/" alt="lorem pixel"></p>
+          <div class="tl-heading">
+            <h4>Some Important Date!</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 3/03/2014</small></p>
+          </div>
+          <div class="tl-body">
+            <p>Write up a quick summary of the event.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="timeline-panel noarrow">
+          <div class="tl-heading">
+            <h4>Secondary Timeline Box</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 3/01/2014</small></p>
+          </div>
+          <div class="tl-body">
+            <p>This might be a follow-up post with related info. Maybe we include some extra links, tweets, user
+              comments, photos, etc.</p>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <div class="tldate">Feb 2014</div>
+      </li>
+
+      <li class="timeline-inverted">
+        <div class="tl-circ"></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h4>The Winter Months</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 02/23/2014</small></p>
+          </div>
+          <div class="tl-body">
+            <p>Gee time really flies when you're having fun.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="tl-circ"></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h4>Yeah we're pretty much done here</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 02/11/2014</small></p>
+          </div>
+          <div class="tl-body">
+            <p>Wasn't this fun though?</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+
   </div>
 
 </ion-content>
