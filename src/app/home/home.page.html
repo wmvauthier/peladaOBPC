@@ -1,0 +1,108 @@
+<ion-header [translucent]="true">
+
+</ion-header>
+
+<ion-content [fullscreen]="true" force-overscroll="false">
+
+  <div id="container">
+
+    <video class="backgroundVideo" autoplay muted loop>
+      <source src="../../assets/video/vid_001.mp4" type="video/mp4">
+    </video>
+
+    <div class="churchLogoArea">
+      <img src="../../assets/imgs/church.png" />
+    </div>
+
+    <ion-grid class="buttonArea">
+
+      <ion-row>
+        <ion-col (click)="go(1)">
+          <img class="imgButtons" src="../../assets/imgs/1.png" />
+          CÉLULAS
+        </ion-col>
+        <ion-col (click)="go(1)">
+          <img class="imgButtons" src="../../assets/imgs/2.png" />
+          IGREJA
+        </ion-col>
+        <ion-col>
+          <img class="imgButtons" src="../../assets/imgs/3.png" />
+          MINISTÉRIOS
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <img class="imgButtons" src="../../assets/imgs/4.png" />
+          NOTÍCIAS
+        </ion-col>
+        <ion-col>
+          <img class="imgButtons" src="../../assets/imgs/5.png" />
+          MENSAGENS
+        </ion-col>
+        <ion-col>
+          <img class="imgButtons" src="../../assets/imgs/6.png" />
+          DOAÇÃO
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <a href="https://www.youtube.com/embed/live_stream?channel=UCSEawNInmlSzOabzc6F6krQ">
+            <img class="imgButtons" src="../../assets/imgs/7.png" />
+            CULTO AO VIVO
+          </a>
+        </ion-col>
+        <ion-col>
+          <img class="imgButtons" src="../../assets/imgs/8.png" />
+          EVENTOS
+        </ion-col>
+        <ion-col>
+          <img class="imgButtons" src="../../assets/imgs/9.png" />
+          MURAL DE ORAÇÕES
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <img class="imgButtons" src="../../assets/imgs/10.png" />
+          PLANO DE ORAÇÃO
+        </ion-col>
+        <ion-col>
+          <img class="imgButtons" src="../../assets/imgs/11.png" />
+          BÍBLIA
+        </ion-col>
+        <ion-col>
+          <a href="https://www.instagram.com/obpc.jaboatao/?hl=pt-br">
+            <img class="imgButtons" src="../../assets/imgs/12.png" />
+            INSTAGRAM
+          </a>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <a href="https://www.facebook.com/OBPCJaboatao">
+            <img class="imgButtons" src="../../assets/imgs/13.png" />
+            FACEBOOK
+          </a>
+        </ion-col>
+        <ion-col>
+          <a href="https://api.whatsapp.com/send?phone=+5581983583276">
+            <img class="imgButtons" src="../../assets/imgs/14.png" />
+            WHATSAPP
+          </a>
+        </ion-col>
+        <ion-col>
+          <img class="imgButtons" src="../../assets/imgs/15.png" />
+          AÇÃO SOCIAL
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+    <ion-icon id="a" name="arrow-down-circle"></ion-icon>
+
+  </div>
+
+</ion-content>

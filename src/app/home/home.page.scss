@@ -1,0 +1,85 @@
+*{
+  color:white;
+}
+
+.container{
+  overflow: hidden!important; /* Hide scrollbars */
+}
+
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+    display: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+.backgroundVideo {
+  position: absolute; 
+  left: 0; 
+	top: 0;
+	min-width: 100%; 
+	min-height: 100%;
+	width: auto;
+  height: auto; 
+  overflow: hidden;
+	z-index: 0;
+	background-size: cover; 
+}
+
+ion-col{
+  margin-right:1%;
+  margin-left:1%;
+  margin-top:0;
+  margin-bottom:0;
+  font-size: 15px;
+  height: 115px;
+  width: 91px;
+}
+
+.imgButtons{
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+ion-icon {
+  font-size: 30px;
+}
+
+.churchLogoArea{
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  margin-top: 25%;
+  margin-bottom: 10%;
+}
+
+.buttonText{
+  margin-top:10%;
+  color: white;
+}
+
+.buttonArea{
+  max-height: 350px;
+  overflow-y: scroll;
+  position: relative;
+  margin-top: 0%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 3%;
+}
+
+ion-toolbar{
+  background-color: transparent;
+}
+
+.header-translucent-ios ion-toolbar {
+  --opacity: .9;
+}
+
+#container {
+  text-align: center;
+  position: absolute;
+}
