@@ -1,6 +1,6 @@
 *{
   color:white;
-  overflow: hidden;
+  overflow: hidden!important;
 }
 
 .container{
@@ -19,9 +19,11 @@ a{
 .backgroundVideo {
   position: absolute; 
   left: 0; 
+  right: 0; 
+  bottom: 0;
 	top: 0;
-	// min-width: 100%; 
-	// min-height: 100%;
+	min-width: 100%; 
+	min-height: 100%;
 	width: auto;
   height: auto; 
   overflow: hidden;
@@ -52,9 +54,9 @@ ion-icon {
   position: relative;
   display: block;
   margin: 0 auto;
-  width: 30%;
+  width: 50%;
   margin-top: 25%;
-  margin-bottom: 10%;
+  margin-bottom: 23%;
 }
 
 .buttonText{
@@ -64,7 +66,7 @@ ion-icon {
 
 .buttonArea{
   max-height: 350px;
-  overflow-y: scroll;
+  overflow-y: scroll!important;
   position: relative;
   margin-top: 0%;
   margin-left: 2%;
@@ -72,8 +74,16 @@ ion-icon {
   margin-bottom: 3%;
 }
 
+.endPage{
+  margin-bottom: 170px;
+}
+
 ion-toolbar{
   background-color: transparent;
+}
+
+ion-content {
+  --overflow: hidden;
 }
 
 .header-translucent-ios ion-toolbar {
