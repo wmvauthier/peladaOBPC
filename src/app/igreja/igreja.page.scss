@@ -4,6 +4,7 @@
 
 .contactSection{
   padding-top:5%;
+  padding-bottom:5%;
 }
 
 .contactSections{
@@ -24,28 +25,6 @@
   margin-left: 3%;
 }
 
-.programCard{
-  height: 100px;
-  text-align: center;
-  font-size: 20px;
-}
-
-.programCardTitle{
-  height: 170px;
-  text-align: center;
-  font-size: 20px;
-}
-
-.programCardName{
-  height: 170px;
-  text-align: center;
-}
-
-.programCardDate{
-  height: 170px;
-  text-align: center;
-}
-
 .btnSections{
   margin-left: 25%;
   margin-left: 25%;
@@ -56,9 +35,8 @@
 }
 
 a:link, a:visited {
-  background-color: transparent;
-  color: #00669d;
-  border: 1px solid #00669d;
+  background-color: #00669d;
+  color: #ffffff;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
@@ -85,6 +63,10 @@ a:link, a:visited {
 ion-icon {
   color:#ffffff;
 }
+
+ion-content {
+  --background: #CCCCCC url("../../assets/imgs/washington.jpg") no-repeat center !important;
+  }
 
 ion-toolbar {
   // --background: transparent;
@@ -153,7 +135,7 @@ ion-toolbar {
     position: absolute;
     content: " ";
     width: 3px;
-    background-color: #eee;
+    background-color: rgba(255,255,255,0.8);
     left: 50%;
     margin-left: -1.5px;
   }
@@ -161,9 +143,9 @@ ion-toolbar {
   .tldate {
     display: block;
     width: 200px;
-    background: #414141;
+    background: #00669d;
     border: 3px solid #212121;
-    color: #ededed;
+    color: rgba(255,255,255,0.8);
     margin: 0 auto;
     padding: 3px 0;
     font-weight: bold;
@@ -192,7 +174,7 @@ ion-toolbar {
   .timeline li .timeline-panel {
     width: 46%;
     float: left;
-    background: #fff;
+    background: rgba(255,255,255,0.8);
     border: 1px solid #d4d4d4;
     padding: 20px;
     position: relative;
