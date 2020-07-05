@@ -18,6 +18,9 @@ export class HomePage {
       case 1:
         this.router.navigateByUrl('/igreja');
         break;
+      case 8:
+        this.router.navigateByUrl('/events');
+        break;
       default:
         break;
     }

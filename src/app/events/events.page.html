@@ -1,0 +1,23 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-button (click)="go(0)" color="primary" class="backButton">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-label class="titleToolbar">EVENTOS</ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="card-background-page">
+
+  <ion-card (click)="subscribeEvent(culto)" *ngFor="let culto of listaCultos"
+    [ngClass]="{'greyScale': culto.vagas === 0}">
+    <img src={{culto.type}}>
+    <div class="text">
+      <h3 class="closeTextUpper"><b>{{culto.nome}}</b></h3>
+      <h4 class="closeText"><b>({{culto.church}})</b></h4>
+      <ion-card-subtitle class="closeText">{{culto.data}}</ion-card-subtitle>
+      <meter min="0" low="35" high="40" max="40" value="{{culto.vagas}}"></meter><br>
+    </div>
+  </ion-card>
+
+</ion-content>

@@ -5,10 +5,10 @@
 <ion-content [fullscreen]="true" force-overscroll="false">
 
   <div id="container">
-
+<!-- 
     <video width="100%" heigth="100%" class="backgroundVideo" autoplay muted loop>
       <source src="../../assets/video/vid_001.mp4" type="video/mp4">
-    </video>
+    </video> -->
 
     <div class="churchLogoArea">
       <img src="../../assets/imgs/church.png" />
@@ -53,7 +53,7 @@
             CULTO AO VIVO
           </a>
         </ion-col>
-        <ion-col>
+        <ion-col (click)="go(8)">
           <img class="imgButtons" src="../../assets/imgs/8.png" />
           EVENTOS
         </ion-col>

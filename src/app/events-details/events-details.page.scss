@@ -1,0 +1,189 @@
+*{
+    color:#000000;
+  }
+
+.selectVagas{
+  margin-top: 15px;
+  width: 90%;
+}
+
+.saveBtn{ 
+  background-color: #00669d; 
+  color: white; 
+  padding: 10px 40px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.cancelBtn{
+  padding: 10px 40px;
+}
+
+  ion-card {
+    position: relative;
+    text-align: center;
+  }
+
+  .btnSubscribe{
+    margin-left: 25%;
+    margin-left: 25%;
+    width:50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 5px;
+  }
+
+  a:link, a:visited {
+    background-color: #00669d;
+    color: #ffffff;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .floatLeft{
+    float: left;
+  }
+  
+  .floatRight{
+    float: right;
+  }
+  
+  ion-icon {
+    color:#ffffff;
+  }
+  
+  ion-content {
+    // --background: #CCCCCC url("../../assets/imgs/washington.jpg") no-repeat center !important;
+    background-color: whitesmoke;
+    }
+  
+  ion-toolbar {
+    // --background: transparent;
+    // --ion-color-base: transparent !important;
+    --background: #00669d;
+    //--ion-color-base: #00669d !important;
+    --border: none;
+    }
+  
+    .toolbar-background {
+      border: none;
+  }
+  
+  .toolbar-conntainer{
+    --border: none;
+  }
+
+    .bar-header {
+      border: 0px !important;
+      border-bottom-color: transparent !important;
+      background-image: none !important;
+      border-bottom: none !important;
+  }
+  
+  .backButton{
+      float:left;
+      margin-left:2%;
+      border-radius: 1000px;
+      font-size: 15px;
+      background-repeat:no-repeat;
+      border: none;
+      overflow: hidden;
+      outline:none;
+      color:#000000;
+    }
+  
+    .rightButton{
+      float:right;
+      margin-right:2%;
+      border-radius: 1000px;
+      font-size: 15px;
+      background-repeat:no-repeat;
+      border: none;
+      overflow: hidden;
+      outline:none;
+      color:#000000;
+    }
+
+    .titleToolbar{
+      color:#FFFFFF;
+      float: left;
+      text-align:left;
+      position:relative;
+      margin-top: 5%;
+      font-size: 16px;
+    }
+    .page-header h1 {
+      font-size: 3.26em;
+      text-align: center;
+      color: #efefef;
+      text-shadow: 1px 1px 0 #000;
+    }
+    
+    /** timeline content **/
+    
+    .tl-heading h4 {
+      margin: 0;
+      color: #00669d;
+    }
+    
+    .tl-body p, .tl-body ul {
+      margin-bottom: 0;
+    }
+    
+    .tl-body > p + p {
+      margin-top: 5px;
+    }
+    
+    /** media queries **/
+    @media (max-width: 991px) {
+      .timeline li .timeline-panel {
+        width: 44%;
+      }
+    }
+    
+    @media (max-width: 700px) {
+      .page-header h1 { font-size: 1.8em; }
+      
+      ul.timeline:before {
+        left: 40px;
+      }
+      
+      .tldate { width: 140px; }
+    
+      ul.timeline li .timeline-panel {
+        width: calc(100% - 90px);
+        width: -moz-calc(100% - 90px);
+        width: -webkit-calc(100% - 90px);
+      }
+    
+      ul.timeline li .tl-circ {
+        top: 22px;
+        left: 22px;
+        margin-left: 0;
+    
+      }
+      ul.timeline > li > .tldate {
+        margin: 0;
+      }
+    
+      ul.timeline > li > .timeline-panel {
+        float: right;
+      }
+    
+      ul.timeline > li > .timeline-panel:before {
+        border-left-width: 0;
+        border-right-width: 15px;
+        left: -15px;
+        right: auto;
+      }
+    
+      ul.timeline > li > .timeline-panel:after {
+        border-left-width: 0;
+        border-right-width: 14px;
+        left: -14px;
+        right: auto;
+      }
+    }

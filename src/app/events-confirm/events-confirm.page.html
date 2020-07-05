@@ -1,0 +1,11 @@
+<ion-header></ion-header>
+
+<ion-content>
+  <div class="codTicket">
+    <b>{{codTicket}}</b>
+  </div>
+
+  <ngx-qrcode *ngIf="createCode" [value]="createCode"></ngx-qrcode>
+
+  <button type="button" class="block buttonTicket" routerLink="/events">VOLTAR</button>
+</ion-content>
