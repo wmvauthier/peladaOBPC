@@ -19,7 +19,14 @@ const routes: Routes = [
   {
     path: 'events-confirm',
     loadChildren: () => import('./events-confirm/events-confirm.module').then( m => m.EventsConfirmPageModule)
-  }
+  },  {
+    path: 'cult',
+    loadChildren: () => import('./cult/cult.module').then( m => m.CultPageModule)
+  },
+  {
+    path: 'validate-event',
+    loadChildren: () => import('./validate-event/validate-event.module').then( m => m.ValidateEventPageModule)
+  },
 
 ];
 

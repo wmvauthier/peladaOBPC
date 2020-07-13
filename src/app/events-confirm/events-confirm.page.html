@@ -1,11 +1,29 @@
 <ion-header></ion-header>
 
 <ion-content>
-  <div class="codTicket">
-    <b>{{codTicket}}</b>
+
+  <div class="firstEventData"><b>{{selectedEventData}}</b></div>
+
+  <div class="eventNames">
+    <p *ngFor="let p of selectedPersonaData" class="downEventName">{{p.nome}} - {{p.cpf}}</p>
   </div>
 
   <ngx-qrcode *ngIf="createCode" [value]="createCode"></ngx-qrcode>
+  <div class="divTicket">{{qrData}}</div>
+
+  <div class="dottedLine"></div>
+
+  <div class="downEventNome"><b>{{selectedEventNome}} |</b></div>
+  <div class="downEventData"><b>{{selectedEventData}}</b></div>
+
+  <div class="downEventNames">
+    <p *ngFor="let p of selectedPersonaData" class="downEventName">{{p.nome}}</p>
+  </div>
+
+  <div class="downCodTicket">
+    <b>{{qrData}}</b>
+  </div>
 
   <button type="button" class="block buttonTicket" routerLink="/events">VOLTAR</button>
+
 </ion-content>

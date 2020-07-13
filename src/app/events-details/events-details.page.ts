@@ -13,7 +13,7 @@ export class EventsDetailsPage implements OnInit {
   private selectedEventNome: any;
   private selectedEventData: any;
 
-  private selectedQuantityTickets: any;
+  private selectedQuantityTickets: number = 0;
   private selectedEventVagas: any = [];
 
   private selectedPersonaNome: any;
@@ -23,30 +23,41 @@ export class EventsDetailsPage implements OnInit {
   private selectedPersonaData: any = [];
   private countPersona: any;
 
+  public btnSavePersonaData: any;
+
   constructor(private router: Router, private http: HttpService) { }
 
   ngOnInit() {
     this.selectedEventImg = localStorage.getItem('selectedEventImg');
     this.selectedEventNome = localStorage.getItem('selectedEventNome');
     this.selectedEventData = localStorage.getItem('selectedEventData');
-
-    var qtd = parseInt(localStorage.getItem('selectedEventVagas'));
-    this.selectedEventVagas.push({ number: 1, desc: `1 ticket` });
-
-    for (let i = 2; i <= qtd; i++) {
-      this.selectedEventVagas.push({ number: i, desc: `${i} tickets` });
-    }
-
+    this.selectedEventVagas = parseInt(localStorage.getItem('selectedEventVagas'));
   }
 
   setFormNome(nome) { this.selectedPersonaNome = nome; }
   setFormFone(fone) { this.selectedPersonaFone = fone; }
   setFormCPF(cpf) { this.selectedPersonaCPF = cpf; }
 
-  setSelectedQuantityTickets(qtd) {
+  addTicketsQtd() {
+    if (this.selectedQuantityTickets < this.selectedEventVagas && this.selectedQuantityTickets < 5)
+      this.selectedQuantityTickets++;
+
+    if (this.selectedQuantityTickets == 1) { this.btnSavePersonaData = 'Confirmar Inscrição' }
+    else { this.btnSavePersonaData = 'Adicionar Pessoa' }
+
     this.countPersona = 1;
     this.selectedPersonaData = [];
-    this.selectedQuantityTickets = qtd;
+  }
+
+  minusTicketsQtd() {
+    if (this.selectedQuantityTickets > 0)
+      this.selectedQuantityTickets--;
+
+    if (this.selectedQuantityTickets == 1) { this.btnSavePersonaData = 'Confirmar Inscrição' }
+    else { this.btnSavePersonaData = 'Adicionar Pessoa' }
+
+    this.countPersona = 1;
+    this.selectedPersonaData = [];
   }
 
   cleanFormTickets() {
@@ -67,6 +78,9 @@ export class EventsDetailsPage implements OnInit {
       this.countPersona++;
       this.cleanFormTickets();
 
+      if (this.selectedQuantityTickets - this.selectedPersonaData.length == 1) { this.btnSavePersonaData = 'Confirmar Inscrição' }
+      else { this.btnSavePersonaData = 'Adicionar Pessoa' }
+
       if (this.selectedPersonaData.length == this.selectedQuantityTickets) {
 
         this.countPersona = null;
@@ -74,10 +88,11 @@ export class EventsDetailsPage implements OnInit {
         localStorage.setItem('selectedPersonaData', JSON.stringify(this.selectedPersonaData));
 
         console.log(this.selectedPersonaData[0]);
+        let ticket = this.genTicket();
 
         this.http.get('eventos/api/insertTicket', [
           localStorage.getItem('selectedEvent'),
-          this.genTicket(),
+          ticket,
           JSON.stringify(this.selectedPersonaData)
         ]).subscribe(
           data => { console.log(data) },
@@ -85,14 +100,18 @@ export class EventsDetailsPage implements OnInit {
         );
 
         if (!localStorage.getItem('codTicket')) {
-          localStorage.setItem('codTicket', `050720#1#${this.makeid()}`);
+          localStorage.setItem('codTicket', ticket);
         } else if (!localStorage.getItem('codTicket2')) {
-          localStorage.setItem('codTicket2', `050720#1#${this.makeid()}`);
+          localStorage.setItem('codTicket2', ticket);
         } else if (!localStorage.getItem('codTicket3')) {
-          localStorage.setItem('codTicket3', `050720#1#${this.makeid()}`);
+          localStorage.setItem('codTicket3', ticket);
         }
 
-        this.router.navigateByUrl('/events-confirm');
+        if (localStorage.getItem('codTicket') ||
+          localStorage.getItem('codTicket2') ||
+          localStorage.getItem('codTicket3')) {
+          this.router.navigateByUrl('/events-confirm');
+        }
 
       }
     } else { alert('Preencha todos os campos!') }
@@ -110,16 +129,11 @@ export class EventsDetailsPage implements OnInit {
   }
 
   genTicket() {
-
-    let year = new Date().getFullYear().toString().substr(0, 2);
-    let month = (new Date().getMonth() + 1).toString();
-    let day = (new Date().getDate()).toString();
-
-    if (month.length < 2) { month = `0${month}` }
-    if (day.length < 2) { day = `0${day}` }
-
-    return `${day}${month}${year}-${localStorage.getItem('selectedEvent')}-${this.makeid()}`;
-
+    var dat = localStorage.getItem('selectedEventData').replace('/', '').replace('/', '');
+    var dat1 = dat.substring(0, 4);
+    var dat2 = dat.substring(6, 8);
+    let ticket = `${dat1}${dat2}-${localStorage.getItem('selectedEvent')}-${this.makeid()}`;
+    return ticket;
   }
 
   go(number) {

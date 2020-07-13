@@ -65,8 +65,9 @@ ion-icon {
 }
 
 ion-content {
-  --background: #CCCCCC url("../../assets/imgs/washington.jpg") no-repeat center !important;
-  }
+  //--background: #CCCCCC url("../../assets/imgs/washington.jpg") no-repeat center !important;
+  --background: #CCCCCC;  
+}
 
 ion-toolbar {
   // --background: transparent;

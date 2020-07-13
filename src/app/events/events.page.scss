@@ -23,6 +23,54 @@
   meter::-webkit-meter-suboptimum-value{background:orange;}
   meter::-webkit-meter-even-less-good-value{background:red;}
 
+  .container {
+    position: relative;
+ }
+
+ .tag {
+    float: left;
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    z-index: 1000;
+    background-color: whitesmoke;
+    border-radius: 10%;
+    padding: 5px;
+    color: whitesmoke!important;
+    font-weight: bold;
+    width: 60px;
+    height: 60px;
+    vertical-align: middle;
+ }
+
+.dateSquare{
+  width: 100%;
+  padding-right: 4%;
+  padding-left: 4%;
+  text-align: center;
+  color: whitesmoke!important;
+  transform: translate(-5%, 10%);
+}
+
+.dateSquareText{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 25px;
+  text-align:center;
+  font-weight: bold;
+  color: #000!important;
+}
+
+.dateSquareText2{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 15px;
+  text-align:center;
+  font-weight: bold;
+  color: red!important;
+
+}
+
   .greyScale{
     filter: grayscale(100%);
   }

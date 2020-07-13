@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-events-confirm',
@@ -9,8 +10,12 @@ export class EventsConfirmPage implements OnInit {
 
   private qrData: any;
   private createCode: any;
+  private selectedEvent: any = localStorage.getItem('selectedEvent');
+  public selectedEventNome: any;
+  public selectedEventData: any;
+  public selectedPersonaData: any;
 
-  constructor() { }
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
 
@@ -20,18 +25,44 @@ export class EventsConfirmPage implements OnInit {
     let codTicket2 = localStorage.getItem('codTicket2');
     let codTicket3 = localStorage.getItem('codTicket3');
 
+    this.selectedEventNome = localStorage.getItem('selectedEventNome');
+    this.selectedEventData = this.formatTextData();
+
     while (!this.qrData) {
-      if (codTicket && selectedId == codTicket.split('#')[1]) {
+      if (codTicket && selectedId == codTicket.split('-')[1]) {
         this.qrData = localStorage.getItem('codTicket');
-      } else if (codTicket2 && selectedId == codTicket2.split('#')[1]) {
+      } else if (codTicket2 && selectedId == codTicket2.split('-')[1]) {
         this.qrData = localStorage.getItem('codTicket2');
-      } else if (codTicket3 && selectedId == codTicket3.split('#')[1]) {
+      } else if (codTicket3 && selectedId == codTicket3.split('-')[1]) {
         this.qrData = localStorage.getItem('codTicket3');
       }
     }
 
+    this.http.get('eventos/api/listaTicket', [this.selectedEvent]).subscribe(
+      data => {
+        data.eventosTickets.forEach(element => {
+          if (element.ticket == this.qrData) {
+            this.selectedPersonaData = JSON.parse(element.personaData);
+          }
+        });
+      },
+      error => console.log(error)
+    )
+
     this.create();
 
+  }
+
+  formatTextData() {
+    let dat = localStorage.getItem('selectedEventData');
+
+    let day = parseInt(dat.substr(0, 2));
+    let month = parseInt(dat.substr(3, 2)) - 1;
+    let year = parseInt(dat.substr(6, 8));
+
+    const letterMonth = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
+
+    return day + "  " + letterMonth[month] + "  " + year;
   }
 
   create() {

@@ -5,21 +5,21 @@
 <ion-content [fullscreen]="true" force-overscroll="false">
 
   <div id="container">
-<!-- 
+    <!-- 
     <video width="100%" heigth="100%" class="backgroundVideo" autoplay muted loop>
       <source src="../../assets/video/vid_001.mp4" type="video/mp4">
     </video> -->
 
-    <div class="churchLogoArea">
+    <div (click)="developOptions()" class="churchLogoArea">
       <img src="../../assets/imgs/church.png" />
     </div>
 
     <ion-grid class="buttonArea">
 
       <ion-row>
-        <ion-col (click)="go(1)">
+        <ion-col>
           <img class="imgButtons" src="../../assets/imgs/1.png" />
-          CÉLULAS
+          GRUPOS
         </ion-col>
         <ion-col (click)="go(1)">
           <img class="imgButtons" src="../../assets/imgs/2.png" />
@@ -38,7 +38,7 @@
         </ion-col>
         <ion-col>
           <img class="imgButtons" src="../../assets/imgs/5.png" />
-          MENSAGENS
+          CULTOS
         </ion-col>
         <ion-col>
           <img class="imgButtons" src="../../assets/imgs/6.png" />
@@ -48,7 +48,7 @@
 
       <ion-row>
         <ion-col>
-          <a href="https://www.youtube.com/embed/live_stream?channel=UCSEawNInmlSzOabzc6F6krQ">
+          <a href="https://www.youtube.com/channel/UCSEawNInmlSzOabzc6F6krQ/live">
             <img class="imgButtons" src="../../assets/imgs/7.png" />
             CULTO AO VIVO
           </a>
@@ -69,14 +69,14 @@
           PLANO DE ORAÇÃO
         </ion-col>
         <ion-col>
-          <img class="imgButtons" src="../../assets/imgs/11.png" />
-          BÍBLIA
+          <a href="https://www.bibliaonline.com.br/">
+            <img class="imgButtons" src="../../assets/imgs/11.png" />
+            BÍBLIA
+          </a>
         </ion-col>
         <ion-col>
-          <a href="https://www.instagram.com/obpc.jaboatao/?hl=pt-br">
-            <img class="imgButtons" src="../../assets/imgs/12.png" />
-            INSTAGRAM
-          </a>
+          <img class="imgButtons" src="../../assets/imgs/15.png" />
+          AÇÃO SOCIAL
         </ion-col>
       </ion-row>
 
@@ -94,8 +94,10 @@
           </a>
         </ion-col>
         <ion-col>
-          <img class="imgButtons" src="../../assets/imgs/15.png" />
-          AÇÃO SOCIAL
+          <a href="https://www.instagram.com/obpc.jaboatao/?hl=pt-br">
+            <img class="imgButtons" src="../../assets/imgs/12.png" />
+            INSTAGRAM
+          </a>
         </ion-col>
       </ion-row>
 

@@ -8,7 +8,32 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
+  public countDevelopOptions: any = 0;
+
   constructor(private router: Router) { }
+
+  developOptions() {
+
+    console.log(localStorage.getItem('developOptions'))
+
+    if (localStorage.getItem('developOptions')) {
+      this.router.navigateByUrl('/validate-event');
+    } else {
+
+      this.countDevelopOptions++;
+
+      if (this.countDevelopOptions > 30) {
+        localStorage.setItem('developOptions', 'true');
+        this.router.navigateByUrl('/validate-event');
+      }
+
+      setTimeout(function () {
+        this.countDevelopOptions = 0;
+      }, 10000);
+
+    }
+
+  }
 
   go(number) {
     switch (number) {

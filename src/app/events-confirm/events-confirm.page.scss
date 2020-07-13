@@ -14,10 +14,69 @@ ion-content{
 
 ngx-qrcode{
     position: absolute;
-    left: 50%;
+    left: 29%;
     top: 50%;
     font-size: 45px;
     transform: translate(-50%, -50%);
+}
+
+.divTicket{
+    position: absolute;
+    left: 64%;
+    top: 50%;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+}
+
+.dottedLine{
+    position: absolute;
+    top: 60%;
+    width: 80%;
+    margin-left: 10%;
+    border: 1.5px;
+    border-style: dashed;
+}
+
+.firstEventData{
+    text-align:center;
+    margin-top: 30%;
+    font-size: 20px;
+}
+
+.eventNames{
+    margin-top: 5%;
+    text-align:center;
+}
+
+.downEventNome{
+    position: absolute;
+    top: 62%;
+    margin-left: 10%;
+}
+
+.downEventData{
+    position: absolute;
+    left: 68%;
+    top: 62%;
+}
+
+.downEventNames{
+    position: absolute;
+    top: 64%;
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
+.downEventName{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.downCodTicket{
+    position: absolute;
+    left: 68%;
+    top: 66%;
+    font-size: 12px;
 }
 
 .buttonTicket{
