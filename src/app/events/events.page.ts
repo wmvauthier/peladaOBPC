@@ -39,9 +39,9 @@ export class EventsPage implements OnInit {
           this.allCultos.push(
             {
               id: element.id_evento,
-              nome: this.listaImgs[element.id_evento].id,
+              nome: this.listaImgs[element.typeEvento].id,
               church: 'OBPC Jaboatão',
-              type: this.listaImgs[element.id_evento].url,
+              type: this.listaImgs[element.typeEvento].url,
               data: element.dataEvento,
               vagas: element.vagasEvento
             }

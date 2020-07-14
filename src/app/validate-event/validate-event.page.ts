@@ -46,18 +46,20 @@ export class ValidateEventPage implements OnInit {
       data => {
         data.eventosTickets.forEach(element => {
           if (element.ticket == textFound) {
+            this.finalValue = textFound;
             this.http.get('validateTicket', [textFound]).subscribe(
               data => { alert("Ticket validado com sucesso!") },
               error => { alert(error) }
             )
-          } else {
-            alert('Ops! Este Ticket não é válido!');
           }
         });
+        if (!this.finalValue) {
+          alert('Ops! Este Ticket não é válido!');
+        }
       },
       error => console.log(error)
     )
-    this.finalValue = textFound;
+
   }
 
 }
