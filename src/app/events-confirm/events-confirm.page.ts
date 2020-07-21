@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../services/http.service';
-import { platformBrowser } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-events-confirm',

@@ -36,37 +36,45 @@ export class EventsPage implements OnInit {
       data => {
         data.eventos.forEach(element => {
 
-          this.allCultos.push(
-            {
-              id: element.id_evento,
-              nome: this.listaImgs[element.typeEvento].id,
-              church: 'OBPC Jaboatão',
-              type: this.listaImgs[element.typeEvento].url,
-              data: element.dataEvento,
-              vagas: element.vagasEvento
-            }
+          this.http.get(`eventos/api/listaPersona`, [element.id_evento]).subscribe(
+            data2 => {
+              this.allCultos.push(
+                {
+                  id: element.id_evento,
+                  nome: this.listaImgs[element.typeEvento].id,
+                  church: 'OBPC Jaboatão',
+                  type: this.listaImgs[element.typeEvento].url,
+                  data: element.dataEvento,
+                  qtdVagas: data2.listaPersona.length,
+                  qtdHighVagas: data2.listaPersona.length - 1,
+                  qtdLowVagas: data2.listaPersona.length - 5,
+                  vagas: element.vagasEvento
+                }
+              )
+
+              this.allCultos.forEach(element2 => {
+
+                let day = parseInt(element2.data.substr(0, 2));
+                let month = parseInt(element2.data.substr(3, 2)) - 1;
+                let year = parseInt(element2.data.substr(6, 8));
+
+                const letterMonth = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
+
+                let today = new Date();
+                let data = new Date(year, month, day);
+
+                let diff = this.date_diff_indays(today, data);
+
+                if (diff > -1) {
+                  element2.letterMonth = letterMonth[month];
+                  element2.letterDate = day;
+                  this.listaCultos.push(element2);
+                }
+
+              });
+            },
+            error => { console.log(error) }
           )
-
-          this.allCultos.forEach(element => {
-
-            let day = parseInt(element.data.substr(0, 2));
-            let month = parseInt(element.data.substr(3, 2)) - 1;
-            let year = parseInt(element.data.substr(6, 8));
-
-            const letterMonth = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
-
-            let today = new Date();
-            let data = new Date(year, month, day);
-
-            let diff = this.date_diff_indays(today, data);
-
-            if (diff > -1) {
-              element.letterMonth = letterMonth[month];
-              element.letterDate = day;
-              this.listaCultos.push(element);
-            }
-
-          });
 
         });
       },

@@ -22,7 +22,7 @@
       <h3 class="closeTextUpper"><b>{{culto.nome}}</b></h3>
       <h4 class="closeText"><b>({{culto.church}})</b></h4>
       <ion-card-subtitle class="closeText">Início às 19:00h</ion-card-subtitle>
-      <meter min="0" low="35" high="40" max="40" value="{{culto.vagas}}"></meter><br>
+      <meter min="0" low="{{culto.qtdLowVagas}}" high="{{culto.qtdHighVagas}}" max="{{culto.vagas}}" value="{{culto.qtdVagas}}"></meter><br>
     </div>
   </ion-card>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { HttpService } from '../services/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-validate-event',
@@ -14,7 +15,7 @@ export class ValidateEventPage implements OnInit {
 
   public selectedEvent: any = localStorage.getItem('selectedEvent');
 
-  constructor(private qrScanner: QRScanner, private http: HttpService) { }
+  constructor(private qrScanner: QRScanner, private http: HttpService, private router: Router) { }
 
   ngOnInit() {
     this.qrCodeVal = null;
@@ -42,24 +43,8 @@ export class ValidateEventPage implements OnInit {
     document.getElementsByTagName("body")[0].style.opacity = '1';
     this.qrCodeVal.unsubscribe();
     this.qrCodeVal = null;
-    this.http.get('eventos/api/listaTicket', [this.selectedEvent]).subscribe(
-      data => {
-        data.eventosTickets.forEach(element => {
-          if (element.ticket == textFound) {
-            this.finalValue = textFound;
-            this.http.get('validateTicket', [textFound]).subscribe(
-              data => { alert("Ticket validado com sucesso!") },
-              error => { alert(error) }
-            )
-          }
-        });
-        if (!this.finalValue) {
-          alert('Ops! Este Ticket não é válido!');
-        }
-      },
-      error => console.log(error)
-    )
-
+    localStorage.setItem('ticketToValidate', textFound);
+    this.router.navigateByUrl('/validate-ticket-page');
   }
 
 }
