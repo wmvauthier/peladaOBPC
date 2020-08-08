@@ -27,9 +27,21 @@ const routes: Routes = [
   {
     path: 'validate-event',
     loadChildren: () => import('./validate-event/validate-event.module').then( m => m.ValidateEventPageModule)
-  },  {
+  },
+  {
     path: 'validate-ticket-page',
     loadChildren: () => import('./validate-ticket-page/validate-ticket-page.module').then( m => m.ValidateTicketPagePageModule)
+  },  {
+    path: 'adv-options',
+    loadChildren: () => import('./adv-options/adv-options.module').then( m => m.AdvOptionsPageModule)
+  },
+  {
+    path: 'lista-cultos',
+    loadChildren: () => import('./lista-cultos/lista-cultos.module').then( m => m.ListaCultosPageModule)
+  },
+  {
+    path: 'lista-personas',
+    loadChildren: () => import('./lista-personas/lista-personas.module').then( m => m.ListaPersonasPageModule)
   },
 
 

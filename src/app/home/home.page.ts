@@ -17,14 +17,14 @@ export class HomePage {
     console.log(localStorage.getItem('developOptions'))
 
     if (localStorage.getItem('developOptions')) {
-      this.router.navigateByUrl('/validate-event');
+      this.router.navigateByUrl('/adv-options');
     } else {
 
       this.countDevelopOptions++;
 
       if (this.countDevelopOptions > 30) {
         localStorage.setItem('developOptions', 'true');
-        this.router.navigateByUrl('/validate-event');
+        this.router.navigateByUrl('/adv-options');
       }
 
       setTimeout(function () {

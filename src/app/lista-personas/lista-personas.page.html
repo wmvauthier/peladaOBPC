@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Pessoas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let p of listaPersonas" (click)="validatePersona(p)" class="personaLista">
+    {{p.count}} - {{p.nome}}<br>
+    {{p.rg}}
+    <span *ngIf='p.status == "1"' class="dot bkgRed"></span>
+    <span *ngIf='p.status == "0"' class="dot bkgGreen"></span>
+  </ion-card>
+</ion-content>
