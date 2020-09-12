@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../services/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events-confirm',
@@ -15,7 +16,7 @@ export class EventsConfirmPage implements OnInit {
   public selectedEventData: any;
   public selectedPersonaData: any;
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService, private router: Router) { }
 
   ngOnInit() {
 
@@ -65,8 +66,11 @@ export class EventsConfirmPage implements OnInit {
     return day + "  " + letterMonth[month] + "  " + year;
   }
 
-  create() {
-    this.createCode = this.qrData;
+  backConfirm() {
+    if (!navigator.onLine) { this.router.navigateByUrl('/home') }
+    else { this.router.navigateByUrl('/events') }
   }
+
+  create() { this.createCode = this.qrData }
 
 }

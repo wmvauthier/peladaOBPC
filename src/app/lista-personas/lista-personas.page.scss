@@ -4,6 +4,13 @@
     font-weight: bold;
 }
 
+.btnAdd{
+    padding: 2%;
+    text-align: center;
+    background-color: green;
+    color: whitesmoke;
+}
+
 .dot {
     height: 20px;
     width: 20px;
@@ -14,6 +21,28 @@
     padding-bottom: -150%;
   }
 
-  .bkgRed{ background-color: red }
+  .floatRight{     
+    display: inline-block;
+    float: right;
+    padding-bottom: -150%;
+  }
 
-  .bkgGreen{ background-color: green }
+.centeredX{text-align: center; font-size: 9px;}
+
+.counter{text-align: center; font-size: 25px;}
+
+  .bkgRed{ background-color: red; color: whitesmoke }
+
+  .bkgGreen{ background-color: green; color: whitesmoke; }
+
+  .bkgYellow{ background-color: yellow; color: black; }
+
+  .btnValid{padding: 10px; margin: 10px;}
+
+  ion-toggle {
+    --background: whitesmoke;
+    --background-checked: gray;
+  
+    --handle-background: green;
+    --handle-background-checked: green;
+  }

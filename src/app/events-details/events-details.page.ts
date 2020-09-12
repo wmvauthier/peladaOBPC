@@ -83,34 +83,36 @@ export class EventsDetailsPage implements OnInit {
 
       if (this.selectedPersonaData.length == this.selectedQuantityTickets) {
 
-        this.countPersona = null;
-        this.cleanFormTickets();
-        localStorage.setItem('selectedPersonaData', JSON.stringify(this.selectedPersonaData));
+        if (confirm('Deseja adicionar mais alguém ao seu Ticket? Se quiser, clique em Cancelar e insira os outros. Se não quiser adicionar mais pessoas, clique em OK!')) {
+          this.countPersona = null;
+          this.cleanFormTickets();
+          localStorage.setItem('selectedPersonaData', JSON.stringify(this.selectedPersonaData));
 
-        console.log(this.selectedPersonaData[0]);
-        let ticket = this.genTicket();
+          console.log(this.selectedPersonaData[0]);
+          let ticket = this.genTicket();
 
-        this.http.get('eventos/api/insertTicket', [
-          localStorage.getItem('selectedEvent'),
-          ticket,
-          JSON.stringify(this.selectedPersonaData)
-        ]).subscribe(
-          data => { console.log(data) },
-          error => { console.log(error) }
-        );
+          this.http.get('eventos/api/insertTicket', [
+            localStorage.getItem('selectedEvent'),
+            ticket,
+            JSON.stringify(this.selectedPersonaData)
+          ]).subscribe(
+            data => { console.log(data) },
+            error => { console.log(error) }
+          );
 
-        if (!localStorage.getItem('codTicket')) {
-          localStorage.setItem('codTicket', ticket);
-        } else if (!localStorage.getItem('codTicket2')) {
-          localStorage.setItem('codTicket2', ticket);
-        } else if (!localStorage.getItem('codTicket3')) {
-          localStorage.setItem('codTicket3', ticket);
-        }
+          if (!localStorage.getItem('codTicket')) {
+            localStorage.setItem('codTicket', ticket);
+          } else if (!localStorage.getItem('codTicket2')) {
+            localStorage.setItem('codTicket2', ticket);
+          } else if (!localStorage.getItem('codTicket3')) {
+            localStorage.setItem('codTicket3', ticket);
+          }
 
-        if (localStorage.getItem('codTicket') ||
-          localStorage.getItem('codTicket2') ||
-          localStorage.getItem('codTicket3')) {
-          this.router.navigateByUrl('/events-confirm');
+          if (localStorage.getItem('codTicket') ||
+            localStorage.getItem('codTicket2') ||
+            localStorage.getItem('codTicket3')) {
+            this.router.navigateByUrl('/events-confirm');
+          }
         }
 
       }

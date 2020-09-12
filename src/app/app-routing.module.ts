@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'lista-personas',
     loadChildren: () => import('./lista-personas/lista-personas.module').then( m => m.ListaPersonasPageModule)
   },
+  {
+    path: 'messages',
+    loadChildren: () => import('./messages/messages.module').then( m => m.MessagesPageModule)
+  },
 
 
 ];

@@ -12,6 +12,7 @@
 
     <div (click)="developOptions()" class="churchLogoArea">
       <img src="../../assets/imgs/church.png" />
+      <div class="versionPage">v1.8.1</div>
     </div>
 
     <ion-grid class="buttonArea">
@@ -36,9 +37,9 @@
           <img class="imgButtons" src="../../assets/imgs/4.png" />
           NOTÍCIAS
         </ion-col>
-        <ion-col>
+        <ion-col (click)="go(5)">
           <img class="imgButtons" src="../../assets/imgs/5.png" />
-          CULTOS
+          MENSAGENS
         </ion-col>
         <ion-col>
           <img class="imgButtons" src="../../assets/imgs/6.png" />

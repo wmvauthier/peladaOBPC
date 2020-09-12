@@ -10,7 +10,7 @@
 <ion-content fullscreen class="card-background-page">
 
   <ion-card (click)="subscribeEvent(culto)" *ngFor="let culto of listaCultos"
-    [ngClass]="{'greyScale': culto.vagas === 0}">
+    [ngClass]="{'greyScale': (!culto.hasTicket && (culto.qtdVagas > culto.vagas))}">
     <div class="container">
       <div class="tag">
         <h3 class="dateSquareText2">{{culto.letterMonth}}</h3>

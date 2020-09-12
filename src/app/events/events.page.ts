@@ -1,6 +1,7 @@
 import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service'
+import { CultPageModule } from '../cult/cult.module';
 
 @Component({
   selector: 'app-events',
@@ -32,54 +33,117 @@ export class EventsPage implements OnInit {
       }
     ];
 
-    this.http.get(`eventos/api`, []).subscribe(
-      data => {
-        data.eventos.forEach(element => {
+    if (!navigator.onLine) {
 
-          this.http.get(`eventos/api/listaPersona`, [element.id_evento]).subscribe(
-            data2 => {
-              this.allCultos.push(
-                {
-                  id: element.id_evento,
-                  nome: this.listaImgs[element.typeEvento].id,
-                  church: 'OBPC Jaboatão',
-                  type: this.listaImgs[element.typeEvento].url,
-                  data: element.dataEvento,
-                  qtdVagas: data2.listaPersona.length,
-                  qtdHighVagas: data2.listaPersona.length - 1,
-                  qtdLowVagas: data2.listaPersona.length - 5,
-                  vagas: element.vagasEvento
-                }
-              )
+      this.validateCodTicket();
 
-              this.allCultos.forEach(element2 => {
+      let codTicket = localStorage.getItem('codTicket');
+      let codTicket2 = localStorage.getItem('codTicket2');
+      let codTicket3 = localStorage.getItem('codTicket3');
 
-                let day = parseInt(element2.data.substr(0, 2));
-                let month = parseInt(element2.data.substr(3, 2)) - 1;
-                let year = parseInt(element2.data.substr(6, 8));
+      if (codTicket || codTicket2 || codTicket3) {
+        this.router.navigateByUrl('/events-confirm');
+      }
 
-                const letterMonth = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
+    } else {
 
-                let today = new Date();
-                let data = new Date(year, month, day);
+      let codTicket = localStorage.getItem('codTicket');
+      let codTicket2 = localStorage.getItem('codTicket2');
+      let codTicket3 = localStorage.getItem('codTicket3');
 
-                let diff = this.date_diff_indays(today, data);
+      if (codTicket || codTicket2 || codTicket3) {
+        this.router.navigateByUrl('/events-confirm');
+      }
 
-                if (diff > -1) {
-                  element2.letterMonth = letterMonth[month];
-                  element2.letterDate = day;
-                  this.listaCultos.push(element2);
-                }
+      this.http.get(`eventos/api`, []).subscribe(
+        data => {
+          data.eventos.forEach(element => {
 
-              });
-            },
-            error => { console.log(error) }
-          )
+            this.http.get(`eventos/api/listaPersona`, [element.id_evento]).subscribe(
+              data2 => {
 
-        });
-      },
-      error => console.log(error)
-    );
+                let cntListaPersona = 0;
+
+                data2.listaPersona.forEach(persona => {
+                  if (persona.status == '1' && persona.id_evento == element.id_evento) {
+                    cntListaPersona++;
+                  }
+                });
+
+                this.allCultos.push(
+                  {
+                    id: element.id_evento,
+                    nome: this.listaImgs[element.typeEvento].id,
+                    church: 'OBPC Jaboatão',
+                    type: this.listaImgs[element.typeEvento].url,
+                    data: element.dataEvento,
+                    qtdVagas: cntListaPersona,
+                    qtdHighVagas: data2.listaPersona.length - 1,
+                    qtdLowVagas: data2.listaPersona.length - 5,
+                    vagas: element.vagasEvento
+                  }
+                );
+
+                this.allCultos.forEach(element2 => {
+
+                  let day = parseInt(element2.data.substr(0, 2));
+                  let month = parseInt(element2.data.substr(3, 2)) - 1;
+                  let year = parseInt(element2.data.substr(6, 8));
+
+                  const letterMonth = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
+
+                  let today = new Date();
+                  let data = new Date(year, month, day);
+
+                  let diff = this.date_diff_indays(today, data);
+
+                  let boolUnqCulto: boolean = true;
+
+                  this.listaCultos.forEach(listaCulto => {
+                    if (element2.id == listaCulto.id) { boolUnqCulto = false }
+                  });
+
+                  let codTicket = localStorage.getItem('codTicket');
+                  let codTicket2 = localStorage.getItem('codTicket2');
+                  let codTicket3 = localStorage.getItem('codTicket3');
+
+                  if (!codTicket) { codTicket = '00' }
+                  if (!codTicket2) { codTicket2 = '00' }
+                  if (!codTicket3) { codTicket3 = '00' }
+
+                  if (parseInt(codTicket.substr(0, 2)) == day ||
+                    parseInt(codTicket2.substr(0, 2)) == day ||
+                    parseInt(codTicket3.substr(0, 2)) == day) {
+                    element2.hasTicket = true;
+                  }
+
+                  if (diff > -1 && boolUnqCulto) {
+                    element2.letterMonth = letterMonth[month];
+                    element2.letterDate = day;
+
+                    let hour = new Date().getHours();
+                    let date = new Date().getUTCDate() - 1;
+
+                    this.listaCultos.push(element2);
+
+                    if (element2.nome == 'CULTO DE LOUVOR' && (hour > 20) && element2.letterDate == date) {
+                      this.listaCultos.splice(element2);
+                    }
+
+                  }
+
+                });
+
+
+              },
+              error => { console.log(error) }
+            )
+
+          });
+        },
+        error => console.log(error)
+      );
+    }
 
   };
 
@@ -93,7 +157,7 @@ export class EventsPage implements OnInit {
 
     this.validateCodTicket();
 
-    if (event.vagas > 0) {
+    if (event.qtdVagas < event.vagas) {
 
       let codTicket = localStorage.getItem('codTicket');
       let codTicket2 = localStorage.getItem('codTicket2');
@@ -109,6 +173,8 @@ export class EventsPage implements OnInit {
         this.router.navigateByUrl('/events-details');
       }
 
+    } else if (event.hasTicket) {
+      this.router.navigateByUrl('/events-confirm');
     }
 
   }

@@ -43,6 +43,9 @@ export class HomePage {
       case 1:
         this.router.navigateByUrl('/igreja');
         break;
+      case 5:
+        this.router.navigateByUrl('/messages');
+        break;
       case 8:
         this.router.navigateByUrl('/events');
         break;
