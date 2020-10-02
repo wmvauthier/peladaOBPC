@@ -1,112 +1,330 @@
-<ion-header [translucent]="true">
+<ion-content [fullscreen]="true">
 
-</ion-header>
+  <div *ngIf="showLista">
 
-<ion-content [fullscreen]="true" force-overscroll="false">
+    <ion-row>
+      <ion-col *ngFor="let j of listaJogadores" size="4">
+        <ion-card [ngClass]="{'bkgBlack': j.med == 5,
+        'bkgGold': j.med == 4,
+          'bkgSilver': j.med == 3,
+          'bkgBronze': j.med < 3}" 
+          class="personaLista" (click)="switchStatusCondition(j)">
+          {{j.nome}}<br>
+          <span *ngIf='j.status == "0"' class="dot bkgRed"></span>
+          <span *ngIf='j.status == "1"' class="dot bkgGreen"></span>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
-  <div id="container">
-    
-    <!-- <video width="100%" heigth="100%" class="backgroundVideo" autoplay muted loop>
-      <source src="../../assets/video/vid_001.mp4" type="video/mp4">
-    </video> -->
-
-    <div (click)="developOptions()" class="churchLogoArea">
-      <img src="../../assets/imgs/church.png" />
-      <div class="versionPage">v1.8.1</div>
+    <div class="buttonArea">
+      <ion-button (click)="generateTeams()" expand="block">Gerar Times</ion-button>
     </div>
 
-    <ion-grid class="buttonArea">
+  </div>
 
-      <ion-row>
-        <ion-col>
-          <img class="imgButtons" src="../../assets/imgs/1.png" />
-          GRUPOS
-        </ion-col>
-        <ion-col (click)="go(1)">
-          <img class="imgButtons" src="../../assets/imgs/2.png" />
-          IGREJA
-        </ion-col>
-        <ion-col>
-          <img class="imgButtons" src="../../assets/imgs/3.png" />
-          MINISTÉRIOS
-        </ion-col>
-      </ion-row>
+  <div *ngIf="!showLista">
 
-      <ion-row>
-        <ion-col>
-          <img class="imgButtons" src="../../assets/imgs/4.png" />
-          NOTÍCIAS
-        </ion-col>
-        <ion-col (click)="go(5)">
-          <img class="imgButtons" src="../../assets/imgs/5.png" />
-          MENSAGENS
-        </ion-col>
-        <ion-col>
-          <img class="imgButtons" src="../../assets/imgs/6.png" />
-          DOAÇÃO
-        </ion-col>
-      </ion-row>
+    <div *ngFor="let time of timesArray" class="container-fluid cardEQP">
+      <div *ngIf="time.jogadores.length > 0" class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="tile">
+            <div class="wrapper">
 
-      <ion-row>
-        <ion-col>
-          <a href="https://www.youtube.com/channel/UCSEawNInmlSzOabzc6F6krQ/live">
-            <img class="imgButtons" src="../../assets/imgs/7.png" />
-            CULTO AO VIVO
-          </a>
-        </ion-col>
-        <ion-col (click)="go(8)">
-          <img class="imgButtons" src="../../assets/imgs/8.png" />
-          EVENTOS
-        </ion-col>
-        <ion-col>
-          <img class="imgButtons" src="../../assets/imgs/9.png" />
-          MURAL DE ORAÇÕES
-        </ion-col>
-      </ion-row>
+              <div class="header"><b>{{time.nome}}</b></div>
 
-      <ion-row>
-        <ion-col>
-          <img class="imgButtons" src="../../assets/imgs/10.png" />
-          PLANO DE ORAÇÃO
-        </ion-col>
-        <ion-col>
-          <a href="https://www.bibliaonline.com.br/">
-            <img class="imgButtons" src="../../assets/imgs/11.png" />
-            BÍBLIA
-          </a>
-        </ion-col>
-        <ion-col>
-          <img class="imgButtons" src="../../assets/imgs/15.png" />
-          AÇÃO SOCIAL
-        </ion-col>
-      </ion-row>
+              <ion-grid>
 
-      <ion-row>
-        <ion-col>
-          <a href="https://www.facebook.com/OBPCJaboatao">
-            <img class="imgButtons" src="../../assets/imgs/13.png" />
-            FACEBOOK
-          </a>
-        </ion-col>
-        <ion-col>
-          <a href="https://api.whatsapp.com/send?phone=+5581983583276">
-            <img class="imgButtons" src="../../assets/imgs/14.png" />
-            WHATSAPP
-          </a>
-        </ion-col>
-        <ion-col>
-          <a href="https://www.instagram.com/obpc.jaboatao/?hl=pt-br">
-            <img class="imgButtons" src="../../assets/imgs/12.png" />
-            INSTAGRAM
-          </a>
-        </ion-col>
-      </ion-row>
+                <ion-row>
 
-    </ion-grid>
+                  <ion-col>
+                    <ion-card [ngClass]="{'bkgBlack': time.jogadores[0].med == 5,
+                    'bkgGold': time.jogadores[0].med == 4,
+                      'bkgSilver': time.jogadores[0].med == 3,
+                      'bkgBronze': time.jogadores[0].med < 3}" class="jogadorCard">
+                      <div>{{time.jogadores[0].nome}}</div>
+                      <br>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            VEL
+                            {{time.jogadores[0].vel}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            DRI
+                            {{time.jogadores[0].dri}}
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            SHO
+                            {{time.jogadores[0].sho}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            DEF
+                            {{time.jogadores[0].def}}
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            PAS
+                            {{time.jogadores[0].pas}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            PHY
+                            {{time.jogadores[0].phy}}
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card>
+                  </ion-col>
 
-    <div style="heigth: 400px; position: relative; background-color: red"></div>
+                  <ion-col>
+                    <ion-card [ngClass]="{'bkgBlack': time.jogadores[1].med == 5,
+                    'bkgGold': time.jogadores[1].med == 4,
+                      'bkgSilver': time.jogadores[1].med == 3,
+                      'bkgBronze': time.jogadores[1].med < 3}" class="jogadorCard">
+                      <div>{{time.jogadores[1].nome}}</div>
+                      <br>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            VEL
+                            {{time.jogadores[1].vel}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            DRI
+                            {{time.jogadores[1].dri}}
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            SHO
+                            {{time.jogadores[1].sho}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            DEF
+                            {{time.jogadores[1].def}}
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            PAS
+                            {{time.jogadores[1].pas}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            PHY
+                            {{time.jogadores[1].phy}}
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card>
+                  </ion-col>
 
-    <ion-icon class="endPage" name="arrow-down-circle"></ion-icon>
+                </ion-row>
+
+                <ion-row>
+
+                  <ion-col>
+                    <ion-card [ngClass]="{'bkgBlack': time.jogadores[2].med == 5,
+                    'bkgGold': time.jogadores[2].med == 4,
+                      'bkgSilver': time.jogadores[2].med == 3,
+                      'bkgBronze': time.jogadores[2].med < 3}" class="jogadorCard">
+                      <div>{{time.jogadores[2].nome}}</div>
+                      <br>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            VEL
+                            {{time.jogadores[2].vel}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            DRI
+                            {{time.jogadores[2].dri}}
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            SHO
+                            {{time.jogadores[2].sho}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            DEF
+                            {{time.jogadores[2].def}}
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            PAS
+                            {{time.jogadores[2].pas}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            PHY
+                            {{time.jogadores[2].phy}}
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card>
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-card [ngClass]="{'bkgBlack': time.jogadores[3].med == 5,
+                    'bkgGold': time.jogadores[3].med == 4,
+                      'bkgSilver': time.jogadores[3].med == 3,
+                      'bkgBronze': time.jogadores[3].med < 3}" class="jogadorCard">
+                      <div>{{time.jogadores[3].nome}}</div>
+                      <br>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            VEL
+                            {{time.jogadores[3].vel}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            DRI
+                            {{time.jogadores[3].dri}}
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            SHO
+                            {{time.jogadores[3].sho}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            DEF
+                            {{time.jogadores[3].def}}
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col class="innetTextJogacorCard">
+                            PAS
+                            {{time.jogadores[3].pas}}
+                          </ion-col>
+                          <ion-col class="innetTextJogacorCard">
+                            PHY
+                            {{time.jogadores[3].phy}}
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card>
+                  </ion-col>
+
+                </ion-row>
+
+              </ion-grid>
+
+              <div class="dates">
+                <div class="start">
+                  <strong>MÉDIA DO TIME</strong> {{time.statsMED}}
+                  <span></span>
+                </div>
+                <div class="ends">
+                  <strong>TOTAL DE PONTOS</strong> {{time.totalPts}}
+                </div>
+              </div>
+
+              <div class="stats">
+
+                <div>
+                  <strong>VEL</strong> {{time.statsVEL}}
+                </div>
+
+                <div>
+                  <strong>DRI</strong> {{time.statsDRI}}
+                </div>
+
+              </div>
+
+              <div class="stats">
+
+                <div>
+                  <strong>SHO</strong> {{time.statsSHO}}
+                </div>
+
+                <div>
+                  <strong>DEF</strong> {{time.statsDEF}}
+                </div>
+
+              </div>
+
+              <div class="stats">
+
+                <div>
+                  <strong>PAS</strong> {{time.statsPAS}}
+                </div>
+
+                <div>
+                  <strong>PHY</strong> {{time.statsPHY}}
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="outTime.length > 0" class="container-fluid cardEQP">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="tile">
+            <div class="wrapper">
+              <div class="header"><b>Sem Time</b>
+
+                <ion-grid>
+                  <ion-row>
+
+                    <ion-col *ngFor="let jogador of outTime">
+                      <ion-card [ngClass]="{'bkgBlack': jogador.med == 5,
+                      'bkgGold': jogador.med == 4,
+                        'bkgSilver': jogador.med == 3,
+                        'bkgBronze': jogador.med < 3}" class="jogadorCard">
+                        {{jogador.nome}}
+                        <br>
+                        <ion-grid>
+                          <ion-row>
+                            <ion-col class="innetTextJogacorCard">
+                              VEL
+                              {{jogador.vel}}
+                            </ion-col>
+                            <ion-col class="innetTextJogacorCard">
+                              DRI
+                              {{jogador.dri}}
+                            </ion-col>
+                          </ion-row>
+                          <ion-row>
+                            <ion-col class="innetTextJogacorCard">
+                              SHO
+                              {{jogador.sho}}
+                            </ion-col>
+                            <ion-col class="innetTextJogacorCard">
+                              DEF
+                              {{jogador.def}}
+                            </ion-col>
+                          </ion-row>
+                          <ion-row>
+                            <ion-col class="innetTextJogacorCard">
+                              PAS
+                              {{jogador.pas}}
+                            </ion-col>
+                            <ion-col class="innetTextJogacorCard">
+                              PHY
+                              {{jogador.phy}}
+                            </ion-col>
+                          </ion-row>
+                        </ion-grid>
+                      </ion-card>
+                    </ion-col>
+
+                  </ion-row>
+                </ion-grid>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 
